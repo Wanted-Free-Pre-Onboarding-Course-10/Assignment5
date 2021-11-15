@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
 import { Subject } from './subject.entity';
 import { GetListDto } from './Dto/getListDto';
-import * as moment from 'moment'
+import * as moment from 'moment';
 @Injectable()
 export class SubjectService {
   constructor(
@@ -28,13 +28,13 @@ export class SubjectService {
     const dayOfMonth = nowDate.getDate();
     nowDate.setDate(dayOfMonth - 7);
     const subjectList = await this.subjectRepository
-    .createQueryBuilder('subject')
-    .where(`subject.last_modified > ${moment(nowDate).format('YYYY-MM-DD')}`)
-    .orderBy('subject.id', 'DESC')
-    .limit(pageInfo.limit)
-    .offset(pageInfo.offset)
-    .disableEscaping()
-    .getMany();
-  return  subjectList ;
+      .createQueryBuilder('subject')
+      .where(`subject.last_modified > ${moment(nowDate).format('YYYY-MM-DD')}`)
+      .orderBy('subject.id', 'DESC')
+      .limit(pageInfo.limit)
+      .offset(pageInfo.offset)
+      .disableEscaping()
+      .getMany();
+    return subjectList;
   }
 }
