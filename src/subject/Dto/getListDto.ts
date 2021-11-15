@@ -1,9 +1,8 @@
-import { IsNotEmpty } from "class-validator";
-
+import { IsNotEmpty } from 'class-validator';
 export class GetListDto {
-    @IsNotEmpty()
-    limit: number;
+  @IsNotEmpty()
+  limit: number;
 
-    @IsNotEmpty()
-    offset: number;
+  @IsNotEmpty()
+  offset: number;
 }
