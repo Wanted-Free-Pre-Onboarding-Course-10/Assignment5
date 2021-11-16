@@ -5,6 +5,8 @@ import { Repository } from 'typeorm';
 import { SubjectGraphqlReqDto } from './dto/subject.graphql.req';
 import { SubjectGraphqlResDto } from './dto/subject.graphql.res';
 import { SelectQueryBuilder } from 'typeorm/query-builder/SelectQueryBuilder';
+import { GetListDto } from './Dto/getListDto';
+import * as moment from 'moment';
 
 @Injectable()
 export class SubjectService {
@@ -52,7 +54,6 @@ export class SubjectService {
     return queryBuilder;
   }
 
-
   //== graphql response dto 생성 메서드 == //
   private makeGraphqlResponseDtos(
     foundSubjects: Subject[],
@@ -73,12 +74,24 @@ export class SubjectService {
           value.targetCount,
           value.department,
           value.createdAt.toString(),
-          value.updatedAt.toString(),
+          value.updateAt.toString(),
         );
       subjectGraphqlResDtos.push(subjectGraphqlResDto);
     });
 
     return subjectGraphqlResDtos;
+  }
+  async getPostList(pageInfo: GetListDto) {
+    const subjectList = await this.subjectRepository
+      .createQueryBuilder('subject')
+      .orderBy('subject.id', 'DESC')
+      .limit(pageInfo.limit)
+      .offset(pageInfo.offset)
+      .disableEscaping()
+      .getMany();
+    const subjectCount = await this.subjectRepository.count();
+    return { subjectList, subjectCount };
+  }
 
   async getPostListByUpdate(pageInfo: GetListDto) {
     const nowDate = new Date();

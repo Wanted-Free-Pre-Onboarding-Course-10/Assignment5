@@ -34,6 +34,7 @@
     "dotenv": "^10.0.0",
     "graphql": "^15.7.2",
     "graphql-tools": "^8.2.0",
+    "moment": "^2.29.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
