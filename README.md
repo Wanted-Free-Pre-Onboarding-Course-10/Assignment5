@@ -142,4 +142,4 @@ npm run start:dev
 
 ## 개발 과정
 
-
+[임상 정보 리스트](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment5/wiki/%EC%9E%84%EC%83%81%EC%A0%95%EB%B3%B4-%EB%A6%AC%EC%8A%A4%ED%8A%B8)
