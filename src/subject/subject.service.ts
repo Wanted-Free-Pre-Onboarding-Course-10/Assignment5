@@ -57,13 +57,13 @@ export class SubjectService {
             const newSubject = this.subjectRepository.create(
               this.getSubject(subject),
             );
-            await this.subjectRepository.save(newSubject);
+            await this.subjectRepository.createSubject(newSubject);
           }
         }
       } else throw error;
     });
 
-    return 1;
+    return '업데이트를 성공했습니다.';
   }
 
   getSubject(subject) {

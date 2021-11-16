@@ -82,4 +82,9 @@ export class SubjectRepository extends Repository<Subject> {
     }
     return result;
   }
+
+  async createSubject(subject: Subject) {
+    const createdSubject = this.create(subject);
+    await this.save(createdSubject);
+  }
 }
