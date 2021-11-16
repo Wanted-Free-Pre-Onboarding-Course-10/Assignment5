@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SubjectService } from './subject.service';
-<<<<<<< Updated upstream
 import { SubjectRepository } from './subject.repository';
 import { SubjectGraphqlReqDto } from './dto/subject.graphql.req';
 import { GetListDto } from './dto/getListDto';
@@ -11,45 +10,25 @@ const mockRepository = {
   getPageCount: jest.fn(),
   getPostListByUpdate: jest.fn(),
 };
-=======
-import { Subject } from './subject.entity';
-import { SubjectRepository } from './subject.repository';
-import * as request from 'request';
-
-jest.mock('request');
-class MockRepository {
-  datas: Subject[] = [];
-
-  createQueryBuilder(tableName: string) {}
-}
->>>>>>> Stashed changes
 
 jest.mock('request');
 describe('SubjectService', () => {
   let service: SubjectService;
-  let repository: SubjectRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         SubjectService,
-        SubjectRepository,
         {
           provide: SubjectRepository,
-<<<<<<< Updated upstream
           useValue: mockRepository,
-=======
-          useClass: MockRepository,
->>>>>>> Stashed changes
         },
       ],
     }).compile();
 
     service = module.get<SubjectService>(SubjectService);
-    repository = module.get<SubjectRepository>(SubjectRepository);
   });
 
-<<<<<<< Updated upstream
   // == 임상 정보 검색 ==//
   describe('searchSubjects test', () => {
     it('id 만으로 임상 정보 검색 성공', async () => {
@@ -285,15 +264,5 @@ describe('SubjectService', () => {
       expect(result).toBeInstanceOf(Array);
       expect(result.length).toEqual(0);
     });
-=======
-  // == id로 검색 ==//
-  it('', async () => {
-    //given
-
-    //when
-    const result = await service.upDateData();
-    //then
-    expect(result).toBe(1);
->>>>>>> Stashed changes
   });
 });
