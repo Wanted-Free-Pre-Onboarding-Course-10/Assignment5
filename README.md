@@ -117,7 +117,7 @@
 ### 프로젝트 설치
 
 ```
-https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment5.git
+git clone https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment5.git
 
 ```
 
