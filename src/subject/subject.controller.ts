@@ -8,7 +8,7 @@ export class SubjectController {
 
   @Get('/')
   upDateData() {
-    return this.subjectService.upDateData();
+    return this.subjectService.updateData();
   }
 
   @Get('/list')

@@ -27,7 +27,7 @@ export class SubjectService {
   ) {}
 
   @Cron(CronExpression.EVERY_12_HOURS)
-  async upDateData() {
+  async updateData() {
     const options = {
       url: `https://api.odcloud.kr/api/3074271/v1/uddi:cfc19dda-6f75-4c57-86a8-bb9c8b103887?serviceKey=${process.env.SERVICE_KEY}&page=1&perPage=1000`,
       method: 'GET',
