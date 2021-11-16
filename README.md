@@ -72,10 +72,22 @@
 ## 코드 컨벤션
 [코드 컨벤션](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EC%BD%94%EB%93%9C%EC%BB%A8%EB%B2%A4%EC%85%98)
 
-## 시나리오
+## 시나리오 및 시퀀스 정의
+![image](https://user-images.githubusercontent.com/48669085/142013394-288aa47e-b9ee-4369-a209-40e3f5ad675c.png)
+
 
 
 ## 과제 구현사항
+
+| 구현사항  | 구현 여부                                          |
+|------- | ----------------------------------------------- |
+|임상정보를 수집하는 batch task|  OK| 
+|수집한 임상정보에 대한 API|OK |
+|특정 임상정보 읽기(키 값은 자유)| OK | 
+|수집한 임상정보 리스트 API| OK | 
+|최근 일주일내에 업데이트(변경사항이 있는) 된 임상정보 리스트 | OK | 
+|pagination 기능| OK | 
+
 
 
 ## 사용 스택
@@ -87,6 +99,7 @@
 <img src="https://img.shields.io/badge/TYPEORM-red?style=for-the-badge&logo=TYPEORM&logoColor=white" />
 
 ## DB 스키마
+<img src="https://user-images.githubusercontent.com/48669085/142012766-940e2615-8625-4f73-b19a-61f7d7ce9b1c.png" height="300px" width="600px" />
 
 ## API
 
