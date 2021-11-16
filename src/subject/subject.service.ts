@@ -34,18 +34,20 @@ export class SubjectService {
     };
     //batch를 자주하지 않기 때문에 큰 자원낭비라고 판단하지 않아... 이렇게 했다.
     //그래도 최소한 덜 세이브를 하기 위해서... 변경한다.
-    request(options, async (error, response, body) => {
+    const result = request(options, async (error, response, body) => {
       if (!error && response.statusCode == 200) {
         const result = JSON.parse(body).data;
         for (const subject of result) {
-          const found = await this.subjectRepository.findOne({
-            number: subject[SUBJECT_NUMBER],
-          });
+          const found = this.subjectRepository.findSubjectByNumber(
+            subject,
+            SUBJECT_NUMBER,
+          );
           if (found) {
             for (const [key] of Object.entries(found)) {
               if (found[key] !== subject[SUBJECT_NUMBER]) {
-                await this.subjectRepository.update(
-                  { number: subject[SUBJECT_NUMBER] },
+                await this.subjectRepository.updateSubject(
+                  subject,
+                  SUBJECT_NUMBER,
                   this.getSubject(subject),
                 );
                 break;
@@ -58,8 +60,10 @@ export class SubjectService {
             await this.subjectRepository.save(newSubject);
           }
         }
-      }
+      } else throw error;
     });
+
+    return 1;
   }
 
   getSubject(subject) {
