@@ -58,5 +58,6 @@ export class AppService {
         }
       }
     });
+    return '임상정보 DB에 삽입 성공!'
   }
 }
