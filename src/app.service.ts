@@ -1,14 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as request from 'request';
-import { SUBJECT_AGENCY, SUBJECT_DEPARTMENT, SUBJECT_NAME, SUBJECT_NUMBER, SUBJECT_PERIOD, SUBJECT_RANGE, SUBJECT_STEP, SUBJECT_TARGET_COUNT, SUBJECT_TYPE } from 'src/common/subject.property';
+import {
+  SUBJECT_AGENCY,
+  SUBJECT_DEPARTMENT,
+  SUBJECT_NAME,
+  SUBJECT_NUMBER,
+  SUBJECT_PERIOD,
+  SUBJECT_RANGE,
+  SUBJECT_STEP,
+  SUBJECT_TARGET_COUNT,
+  SUBJECT_TYPE,
+} from './common/subject.property';
 import { Repository } from 'typeorm';
 import { Subject } from './subject/subject.entity';
 
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(Subject)
-  private subjectRepository: Repository<Subject>) { }
+  constructor(
+    @InjectRepository(Subject)
+    private subjectRepository: Repository<Subject>,
+  ) {}
 
   getHello(): string {
     return 'Hello World!';
@@ -25,26 +37,26 @@ export class AppService {
     request(options, async (error, response, body) => {
       if (!error && response.statusCode == 200) {
         for (const subject of JSON.parse(body).data) {
-            const convertedSubject = {
-              name: subject[SUBJECT_NAME],
-              number: subject[SUBJECT_NUMBER],
-              period: subject[SUBJECT_PERIOD],
-              range: subject[SUBJECT_RANGE],
-              type: subject[SUBJECT_TYPE],
-              agency: subject[SUBJECT_AGENCY],
-              step: subject[SUBJECT_STEP],
-              targetCount: subject[SUBJECT_TARGET_COUNT],
-              department: subject[SUBJECT_DEPARTMENT]
-            }
+          const convertedSubject = {
+            name: subject[SUBJECT_NAME],
+            number: subject[SUBJECT_NUMBER],
+            period: subject[SUBJECT_PERIOD],
+            range: subject[SUBJECT_RANGE],
+            type: subject[SUBJECT_TYPE],
+            agency: subject[SUBJECT_AGENCY],
+            step: subject[SUBJECT_STEP],
+            targetCount: subject[SUBJECT_TARGET_COUNT],
+            department: subject[SUBJECT_DEPARTMENT],
+          };
           try {
-            const createdSubject = this.subjectRepository.create(convertedSubject)
+            const createdSubject =
+              this.subjectRepository.create(convertedSubject);
             await this.subjectRepository.save(createdSubject);
           } catch (error) {
             // console.log(error);
           }
-            
         }
       }
-    })
+    });
   }
 }
