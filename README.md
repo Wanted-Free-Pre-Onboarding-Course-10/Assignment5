@@ -103,7 +103,7 @@
 <img src="https://user-images.githubusercontent.com/48669085/142012766-940e2615-8625-4f73-b19a-61f7d7ce9b1c.png" height="300px" width="600px" />
 
 ## API
-
+[API문서](https://documenter.getpostman.com/view/13568025/UVCB9Pbm)
 
 ## API 테스트
 
