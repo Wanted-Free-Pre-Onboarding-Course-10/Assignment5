@@ -26,10 +26,12 @@ export class SubjectService {
   async getPostListByUpdate(pageInfo: GetListDto) {
     const nowDate = new Date();
     const dayOfMonth = nowDate.getDate();
+    
     nowDate.setDate(dayOfMonth - 7);
     const subjectList = await this.subjectRepository
       .createQueryBuilder('subject')
-      .where(`subject.last_modified > ${moment(nowDate).format('YYYY-MM-DD')}`)
+      .where('subject.createdAt != subject.updateAt')
+      .andWhere(`subject.updateAt > ${moment(nowDate).format('YYYY-MM-DD')}`)
       .orderBy('subject.id', 'DESC')
       .limit(pageInfo.limit)
       .offset(pageInfo.offset)

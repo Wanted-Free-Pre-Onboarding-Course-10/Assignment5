@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  UpdateDateColumn
 } from 'typeorm';
 
 @Entity()
@@ -13,8 +14,8 @@ export class Subject {
   @CreateDateColumn({ name: 'created_at', nullable: false })
   createdAt: Date;
 
-  @Column({ name: 'last_modified', nullable: true })
-  last_modified: Date;
+  @UpdateDateColumn({ name: 'update_at', nullable: true })
+  updateAt: Date;
 
   @Column({ name: 'name', nullable: false })
   name: string;
