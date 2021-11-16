@@ -106,7 +106,11 @@
 [API문서](https://documenter.getpostman.com/view/13568025/UVCB9Pbm)
 
 ## API 테스트
+1. 우측 링크를 클릭해서 postman으로 들어갑니다.[링크](https://www.postman.com/martian-satellite-348039/workspace/humanscape/overview) 
+2. 정의된 server가 올바른지 확인 합니다.(3.35.220.172:3000)
+<img width="1048" alt="스크린샷 2021-11-17 오전 3 02 20" src="https://user-images.githubusercontent.com/81801012/142041687-0ecf274f-99e8-48df-aec7-77f0929de1c7.png">
 
+3. 이후, API 테스트를 시도해 주세요.
 
 ## 설치 및 실행 방법
 
