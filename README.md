@@ -68,6 +68,7 @@
 
 
 ## 개발 일정
+<img src="https://user-images.githubusercontent.com/48669085/142020616-a3e8876d-72cf-4684-ae41-61d671b39c3b.png" height="350px" width="400px" />
 
 ## 코드 컨벤션
 [코드 컨벤션](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EC%BD%94%EB%93%9C%EC%BB%A8%EB%B2%A4%EC%85%98)
