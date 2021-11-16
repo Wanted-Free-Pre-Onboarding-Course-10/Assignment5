@@ -1,6 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { SubjectService } from './subject/subject.service';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Subject } from './subject/subject.entity';
+
+const mockSubjectService = {};
+const mockSubjectRepository = {};
 
 describe('AppController', () => {
   let appController: AppController;
@@ -8,15 +14,24 @@ describe('AppController', () => {
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [
+        AppService,
+        {
+          provide: SubjectService,
+          useValue: mockSubjectService,
+        },
+        {
+          provide: getRepositoryToken(Subject),
+          useValue: mockSubjectRepository,
+        },
+      ],
     }).compile();
 
     appController = app.get<AppController>(AppController);
   });
-
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
-    });
+  test('', () => {
+    // given
+    // when
+    // then
   });
 });
