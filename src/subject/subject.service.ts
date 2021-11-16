@@ -26,7 +26,7 @@ export class SubjectService {
   async getPostListByUpdate(pageInfo: GetListDto) {
     const nowDate = new Date();
     const dayOfMonth = nowDate.getDate();
-    
+
     nowDate.setDate(dayOfMonth - 7);
     const subjectList = await this.subjectRepository
       .createQueryBuilder('subject')
