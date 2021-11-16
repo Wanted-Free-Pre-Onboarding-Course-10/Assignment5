@@ -20,7 +20,7 @@ export class Subject {
   @Column({ name: 'name', nullable: false })
   name: string;
 
-  @Column({ name: 'number', unique: true, nullable: false })
+  @Column({ name: 'number', unique:true, nullable: false })
   number: string;
 
   @Column({ name: 'period', nullable: true })
