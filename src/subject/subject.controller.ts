@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { GetListDto } from './Dto/getListDto';
+import { GetListDto } from './dto/getListDto';
 import { SubjectService } from './subject.service';
 @Controller('subject')
 export class SubjectController {

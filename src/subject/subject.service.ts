@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { SubjectGraphqlReqDto } from './dto/subject.graphql.req';
 import { SubjectGraphqlResDto } from './dto/subject.graphql.res';
 import { SelectQueryBuilder } from 'typeorm/query-builder/SelectQueryBuilder';
-import { GetListDto } from './Dto/getListDto';
+import { GetListDto } from './dto/getListDto';
 import * as moment from 'moment';
 
 @Injectable()
