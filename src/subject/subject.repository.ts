@@ -1,5 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { Subject } from './subject.entity';
+import { SUBJECT_NUMBER } from '../common/subject.property';
 import { SubjectGraphqlReqDto } from './dto/subject.graphql.req';
 import { SelectQueryBuilder } from 'typeorm/query-builder/SelectQueryBuilder';
 import { GetListDto } from './dto/getListDto';
@@ -66,5 +67,24 @@ export class SubjectRepository extends Repository<Subject> {
     });
 
     return queryBuilder;
+  }
+  findSubjectByNumber(subject, subjectNumber) {
+    return this.findOne({
+      number: subject[subjectNumber],
+    });
+  }
+  async updateSubject(subject, subjectNumber, state) {
+    let result;
+    try {
+      result = await this.update({ number: subject[SUBJECT_NUMBER] }, state);
+    } catch (e) {
+      throw e;
+    }
+    return result;
+  }
+
+  async createSubject(subject: Subject) {
+    const createdSubject = this.create(subject);
+    await this.save(createdSubject);
   }
 }

@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { SubjectService } from './subject.service';
 import { SubjectRepository } from './subject.repository';
 import { SubjectGraphqlReqDto } from './dto/subject.graphql.req';
-import { Subject } from './subject.entity';
-import exp from 'constants';
 import { GetListDto } from './dto/getListDto';
 
 const mockRepository = {
