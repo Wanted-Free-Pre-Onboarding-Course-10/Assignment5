@@ -1,0 +1,22 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type SubjectGraphqlResDto {
+  id: Float
+  name: String
+  number: String
+  period: String
+  range: String
+  type: String
+  agency: String
+  step: String
+  targetCount: Float
+  department: String
+  createdDate: String
+  updatedDate: String
+}
+
+type Query {
+  searchSubjects(id: Float, name: String, number: String, period: String, range: String, type: String, agency: String, step: String, targetCount: Float, department: String): [SubjectGraphqlResDto!]!
+}

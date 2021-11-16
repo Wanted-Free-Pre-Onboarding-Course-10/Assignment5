@@ -14,8 +14,8 @@ export class Subject {
   @CreateDateColumn({ name: 'created_at', nullable: false })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at', nullable: false })
-  updatedAt: Date;
+  @UpdateDateColumn({ name: 'update_at', nullable: true })
+  updateAt: Date;
 
   @Column({ name: 'name', nullable: false })
   name: string;
