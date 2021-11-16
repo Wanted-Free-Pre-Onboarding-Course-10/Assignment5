@@ -5,7 +5,69 @@
 
 본 프로젝트는 원티드x위코드 백엔드 프리온보딩  [휴먼스케이프](https://www.notion.so/wecode/087d474586cb45b8a981a5ab4931b9f3)에서 출제한 과제를 기반으로 제작 되었습니다.
 
-[과제 소개]()
+
+ <details>
+
+<summary> 필수 포함 사항 </summary>
+
+- READ.ME 작성
+ 
+- 프로젝트 빌드, 자세한 실행 방법 명시
+ 
+- 구현 방법과 이유에 대한 간략한 설명
+ 
+- 완료된 시스템이 배포된 서버의 주소
+ 
+- Swagger나 Postman을 통한 API 테스트할때 필요한 상세 방법
+ 
+- 해당 과제를 진행하면서 회고 내용 블로그 포스팅
+ 
+- Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
+ 
+</details>
+
+
+ <details>
+
+<summary> 확인 사항 </summary>
+
+- ORM 사용 필수
+ 
+- 데이터베이스는 SQLite로 구현
+ 
+- secret key, api key 등을 레포지토리에 올리지 않도록 유의
+ 
+- README.md 에 관련 설명 명시 필요
+ 
+</details>
+
+
+ <details>
+
+<summary> 도전 과제: 스스로에게도 도움이 되는 내용 + 추가 가산점 </summary>
+
+- 배포하여 웹에서 사용 할 수 있도록 제공
+ 
+- 임상정보 검색 API 제공
+ 
+</details>
+
+ <details>
+
+ 
+<summary> 과제 요구사항  </summary>
+
+- 임상정보를 수집하는 batch task
+- 수집한 임상정보에 대한 API
+- 특정 임상정보 읽기(키 값은 자유)
+- 수집한 임상정보 리스트 API
+- 최근 일주일내에 업데이트(변경사항이 있는) 된 임상정보 리스트
+- pagination 기능
+- Test 구현시 가산점이 있습니다.
+
+
+</details>
+
 
 ## 개발 일정
 
@@ -63,7 +125,6 @@ npm run start:dev
 
 
 ## 개발도중 고민들
-ps://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EA%B1%B0%EB%9E%98%EB%82%B4%EC%97%AD-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%84%A4%EA%B3%84)
 
 ## 협업 방식
 
