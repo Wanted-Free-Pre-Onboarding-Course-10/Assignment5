@@ -11,16 +11,13 @@ import {
   SUBJECT_STEP,
   SUBJECT_TARGET_COUNT,
   SUBJECT_TYPE,
-} from 'src/common/subject.property';
+} from '../common/subject.property';
 import { SubjectRepository } from './subject.repository';
 import { Injectable, Logger } from '@nestjs/common';
 import { Subject } from './subject.entity';
-import { Repository } from 'typeorm';
 import { SubjectGraphqlReqDto } from './dto/subject.graphql.req';
 import { SubjectGraphqlResDto } from './dto/subject.graphql.res';
-import { SelectQueryBuilder } from 'typeorm/query-builder/SelectQueryBuilder';
 import { GetListDto } from './dto/getListDto';
-import * as moment from 'moment';
 
 @Injectable()
 export class SubjectService {
@@ -82,14 +79,11 @@ export class SubjectService {
 
   // == 검색 기능 == //
   async searchSubjects(
-    subjectGraphqlReqDto: SubjectGraphqlReqDto): Promise<SubjectGraphqlResDto[]> {
-    let queryBuilder = this.subjectRepository.createQueryBuilder('Subject');
-
-    // == make queryBuilder 호출 == //
-    queryBuilder = this.makeQueryBuilder(subjectGraphqlReqDto, queryBuilder);
-
-    // select query
-    const foundSubjects: Subject[] = await queryBuilder.getMany();
+    subjectGraphqlReqDto: SubjectGraphqlReqDto,
+  ): Promise<SubjectGraphqlResDto[]> {
+    const foundSubjects = await this.subjectRepository.searchSubjects(
+      subjectGraphqlReqDto,
+    );
 
     // 리턴할 dto 생성
     const subjectGraphqlResDtos: SubjectGraphqlResDto[] =
@@ -100,20 +94,23 @@ export class SubjectService {
     return subjectGraphqlResDtos;
   }
 
-  //== private methods == //
-  //== 동적으로 queryBuilder 만드는 메서드 == //
-  private makeQueryBuilder(
-    subjectGraphqlReqDto: SubjectGraphqlReqDto,
-    queryBuilder: SelectQueryBuilder<Subject>,
-  ): SelectQueryBuilder<Subject> {
-    // subjectRequestDto를 돌면서 dynamic where절 만들기.
-    Object.keys(subjectGraphqlReqDto).forEach((key) => {
-      queryBuilder = queryBuilder.andWhere(`Subject.${key} = :${key}`, {
-        [`${key}`]: subjectGraphqlReqDto[`${key}`],
-      });
-    });
+  async getPostList(pageInfo: GetListDto) {
+    const subjectList = await this.subjectRepository.getPostList(pageInfo);
+    const totalCount = await this.subjectRepository.getPageCount();
+    return { subjectList, totalCount };
+  }
 
-    return queryBuilder;
+  async getPostListByUpdate(pageInfo: GetListDto) {
+    const nowDate = new Date();
+    const dayOfMonth = nowDate.getDate();
+
+    nowDate.setDate(dayOfMonth - 7);
+
+    const subjectList = await this.subjectRepository.getPostListByUpdate(
+      pageInfo,
+      nowDate,
+    );
+    return subjectList;
   }
 
   //== graphql response dto 생성 메서드 == //
@@ -142,33 +139,5 @@ export class SubjectService {
     });
 
     return subjectGraphqlResDtos;
-  }
-  async getPostList(pageInfo: GetListDto) {
-    const subjectList = await this.subjectRepository
-      .createQueryBuilder('subject')
-      .orderBy('subject.id', 'DESC')
-      .limit(pageInfo.limit)
-      .offset(pageInfo.offset)
-      .disableEscaping()
-      .getMany();
-    const subjectCount = await this.subjectRepository.count();
-    return { subjectList, subjectCount };
-  }
-
-  async getPostListByUpdate(pageInfo: GetListDto) {
-    const nowDate = new Date();
-    const dayOfMonth = nowDate.getDate();
-
-    nowDate.setDate(dayOfMonth - 7);
-    const subjectList = await this.subjectRepository
-      .createQueryBuilder('subject')
-      .where('subject.createdAt != subject.updateAt')
-      .andWhere(`subject.updateAt > ${moment(nowDate).format('YYYY-MM-DD')}`)
-      .orderBy('subject.id', 'DESC')
-      .limit(pageInfo.limit)
-      .offset(pageInfo.offset)
-      .disableEscaping()
-      .getMany();
-    return subjectList;
   }
 }
