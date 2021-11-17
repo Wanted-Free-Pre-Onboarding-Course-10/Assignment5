@@ -119,6 +119,8 @@
 ```
 git clone https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment5.git
 
+.env파일 존재해야 실행가능합니다.
+
 ```
 
  ### 환경 구축 및 
