@@ -133,12 +133,10 @@ npm run start:dev
 | 이름   | github                                          | 담당 역할                  | 회고록             |
 | ------ | ----------------------------------------------- | -------------------------- |------------------|
 | 박지율 | [earthkingman](https://github.com/earthkingman) |  수집한 임상정보 리스트 API, 최근 일주일내에 업데이트(변경사항이 있는) 된 임상정보 리스트   |            |
-| 염재선 | [Yeom Jae Seon](https://github.com/YeomJaeSeon) | 수집한 임상정보에 검색 API, 특정 임상정보 읽기(키 값은 자유) |                     |
+| 염재선 | [Yeom Jae Seon](https://github.com/YeomJaeSeon) | 수집한 임상정보에 검색 API, 특정 임상정보 읽기(키 값은 자유) |[회고록](https://yjs3819.tistory.com/71)|
 | 김태희 | [김태희](https://github.com/godtaehee)           |    임상정보를 수집하는 batch task   |             |
 | 박상엽 | [큰형](  https://github.com/lotus0204)           |   임상정보를 수집하는 batch task   |                   |
 
-
-## 개발도중 고민들
 
 ## 협업 방식
 
